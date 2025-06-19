@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>Super Duper Advanced Snake Game</title>
+
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app" role="application" aria-label="Advanced snake game application">
+    <header id="game-header" role="banner" aria-live="polite">
+      <div class="scoreboard" id="scoreboard" aria-atomic="true" aria-relevant="text">
+        <div class="scorebox" id="score-box">
+          <div class="label">Score</div>
+          <div class="value glow" id="score-value" aria-live="polite" aria-atomic="true" aria-label="Current score">0</div>
+        </div>
+        <div class="scorebox" id="level-box">
+          <div class="label">Level</div>
+          <div class="value glow" id="level-value" aria-live="polite" aria-atomic="true" aria-label="Current level">1</div>
+        </div>
+        <div class="scorebox" id="lives-box">
+          <div class="label">Lives</div>
+          <div class="value glow" id="lives-value" aria-live="polite" aria-atomic="true" aria-label="Remaining lives">3</div>
+        </div>
+      </div>
+      <div id="timer" aria-live="polite" aria-atomic="true" aria-label="Elapsed time">00:00</div>
+    </header>
+
+    <aside id="sidebar" role="complementary" aria-label="Game controls, power-ups, and achievements">
+      <section class="sidebar-section">
+        <div class="sidebar-collapsible" tabindex="0" aria-expanded="true" aria-controls="controls-content" id="controls-toggle">
+          Controls
+          <span class="material-icons" aria-hidden="true" id="controls-icon">expand_more</span>
+        </div>
+        <div class="sidebar-content" id="controls-content" role="region" aria-labelledby="controls-toggle">
+          <div class="sidebar-text">
+            Use arrow keys or WASD to move the snake.<br />
+            On touch devices, swipe in the desired direction.<br />
+            Use the action buttons below to pause, adjust settings, or fullscreen.
+          </div>
+        </div>
+      </section>
+
+      <section class="sidebar-section">
+        <div class="sidebar-collapsible" tabindex="0" aria-expanded="true" aria-controls="powerups-content" id="powerups-toggle">
+          Power-Ups
+          <span class="material-icons" aria-hidden="true" id="powerups-icon">expand_more</span>
+        </div>
+        <div class="sidebar-content" id="powerups-content" role="region" aria-labelledby="powerups-toggle">
+          <div id="power-ups-list" class="sidebar-text" aria-live="polite" aria-atomic="true">
+            No active power-ups
+          </div>
+        </div>
+      </section>
+
+      <section class="sidebar-section">
+        <div class="sidebar-collapsible" tabindex="0" aria-expanded="true" aria-controls="achievements-content" id="achievements-toggle">
+          Achievements
+          <span class="material-icons" aria-hidden="true" id="achievements-icon">expand_more</span>
+        </div>
+        <div class="sidebar-content" id="achievements-content" role="region" aria-labelledby="achievements-toggle">
+          <div id="achievements-list" aria-live="polite" aria-atomic="true">
+            No achievements unlocked yet.
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <main id="game-main" role="main" aria-label="Snake game canvas area">
+      <canvas id="game-canvas" width="480" height="320" aria-label="Snake game canvas"></canvas>
+      <button id="fullscreen-btn" aria-label="Toggle fullscreen mode" title="Toggle fullscreen">
+        <span class="material-icons">fullscreen</span>
+      </button>
+    </main>
+
+    <footer id="game-bottom" role="contentinfo" aria-label="Game action buttons">
+      <div id="action-buttons" role="group" aria-label="Game controls">
+        <button id="btn-pause" class="action-btn" aria-pressed="false" aria-label="Pause or resume the game">
+          <span class="material-icons" aria-hidden="true">pause_circle_filled</span> Pause
+        </button>
+        <button id="btn-settings" class="action-btn" aria-label="Open settings menu">
+          <span class="material-icons" aria-hidden="true">settings</span> Settings
+        </button>
+        <button id="btn-restart" class="action-btn" aria-label="Restart the game">
+          <span class="material-icons" aria-hidden="true">restart_alt</span> Restart
+        </button>
+      </div>
+      <div aria-live="polite" aria-atomic="true" id="status-message" style="font-weight: bold; color: #38bdf8;"></div>
+    </footer>
+
+  </div>
+
+  <!-- Overlay menus for pause, game over, settings -->
+  <div id="overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div id="overlay-content" tabindex="0">
+      <h2 id="overlay-title">Paused</h2>
+      <div id="overlay-body">Game is paused. Press Resume to continue playing.</div>
+      <button id="overlay-primary-btn">Resume</button>
+    </div>
+  </div>
+
+
+  <!-- Game script -->
+  <script src="game.js"></script>
+</body>
+</html>
+
